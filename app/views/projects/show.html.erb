@@ -1,0 +1,21 @@
+<h1><%= @project.title %></h1>
+
+<ul>
+     <% @project.tasks.each do |task| %>
+<li><%= task.text %>
+	<%= link_to "削除", project_task_path(task.project_id,task.id), method: :delete, data: { confirm: "よろしいですか?" } %>
+
+</li>
+<% end %>
+
+
+<li>
+   <%= form_for [@project, @project.tasks.build] do |f| %>
+   <%= f.text_field :text %>
+   <%= f.submit %>
+   <% end %>
+
+</li>
+
+</ul>
+
